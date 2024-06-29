@@ -12,4 +12,5 @@ urlpatterns =[
     path('adopcionG', views.adopcionG, name='adopcionG'),
     path('gatitoCachorro', views.gatitoCachorro, name='gatitoCachorro'),
     path('gatoAdulto',views.gatoAdulto, name='gatoAdulto'),
+    path('orm1',views.orm1,name='orm1')
 ]

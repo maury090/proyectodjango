@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Ayuda,Producto
+
 
 # Create your views here.
 
@@ -42,3 +44,16 @@ def gatitoCachorro(request):
 def gatoAdulto(request):
     context={}
     return render(request, 'animales/gato_adulto.html',context)
+
+
+
+def orm1(request):
+    productos=Producto.objects.all()
+    context={"productos":productos}
+    return render (request, 'animales/orm1.html',context)
+
+def crud (request):
+    productos = Producto.objects.all()
+    context = {'productos' : productos}
+    return render (request, 'animales/crud_lista.html',context)
+

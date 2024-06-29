@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Ayuda(models.Model):
     id_ayuda = models.AutoField(db_column='idAyuda',primary_key=True)
     ayuda = models.CharField(max_length=15, blank=False, null=False)

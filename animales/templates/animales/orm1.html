@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORM 1</title>
+</head>
+<body>
+    <h5>Muestra de datos </h5>
+    <br>
+    {% for producto in productos%}
+
+        {{producto.id_producto}}, {{producto.nombre_producto}}, {{producto.marca_producto}}, {{producto.valor_producto}},{{producto.id_ayuda}}
+        <br>
+    {% endfor %}
+</body>
+</html>
