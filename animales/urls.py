@@ -12,5 +12,9 @@ urlpatterns =[
     path('adopcionG', views.adopcionG, name='adopcionG'),
     path('gatitoCachorro', views.gatitoCachorro, name='gatitoCachorro'),
     path('gatoAdulto',views.gatoAdulto, name='gatoAdulto'),
-    path('orm1',views.orm1,name='orm1')
+    path('orm1',views.orm1,name='orm1'),
+    path('crud',views.crud, name='crud'),
+    path('crud_agregar', views.crud_agregar, name='crud_agregar'),
+    path('crud_del/<str:pk>', views.crud_del, name='crud_del'),
+    path('crud_edit/<str:pk>',views.crud_edit, name='crud_edit'),
 ]
