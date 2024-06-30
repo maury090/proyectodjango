@@ -35,8 +35,8 @@
                 <td>{{ x.nombre_producto}}</td>
                 <td>{{ x.marca_producto}}</td>
                 <td>{{ x.valor_producto}}</td>
-                <td><a href="{% url 'crud_del' pk=x.id_producto %}">Eliminar</a></td>
-                <td><a href="{% url 'crud_edit'pk=x.id_producto %}">Modificar</a></td>
+                <td><a href="{% url 'crud_del'  pk=x.id_producto %}">Eliminar</a></td>
+                <td><a href="{% url 'crud_edit' pk=x.id_producto %}">Modificar</a></td>
             </tr>
             {% endfor %}
         {% endif %}

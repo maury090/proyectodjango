@@ -45,6 +45,21 @@ def gatoAdulto(request):
     context={}
     return render(request, 'animales/gato_adulto.html',context)
 
+def gato1(request):
+    context={}
+    return render(request, 'animales/gato1.html',context)
+
+def perro1(request):
+    context={}
+    return render(request, 'animales/perro1.html',context)
+
+def formulario(request):
+    context={}
+    return render(request, 'animales/formulario_adopcion.html',context)
+
+
+
+
 
 
 def orm1(request):
