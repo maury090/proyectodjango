@@ -233,6 +233,10 @@ main {
 	flex-direction: column;
 	align-items: center;
 }
+.formulario__grupo-btn-enviar a{
+  text-decoration: none;
+  color: white;
+}
 
 .formulario__btn {
 	height: 45px;
@@ -250,9 +254,7 @@ main {
 .formulario__btn:hover {
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }
-#enlace.formulario{
-  text-decoration: none;
-}
+
 
 .formulario__mensaje-exito {
 	font-size: 14px;
