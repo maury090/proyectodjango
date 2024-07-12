@@ -60,7 +60,50 @@ def formulario(request):
 
 
 def listar(request):
-    producto = Producto.objects.all()
-    context = {'productos':producto}
+    productos = Producto.objects.all()
+    context = {'productos':productos}
     return render(request, 'animales/crud/listar.html',context)
 
+def agregar(request):
+    if request.method is not "POST":
+        ayudas = Ayuda.objects.all()
+        context={'ayudas':ayudas}
+        return render(request, 'animales/crud/agregar.html',context)
+    
+    else:
+        id_producto = request.POST["idProducto"]
+        nombre_producto = request.POST["nombreProducto"]
+        marca_producto = request.POST["marcaProducto"] 
+        precio_producto = request.POST["precio"]
+        ayuda = request.POST["tipo_producto"]
+        imagen = request.POST["imagen"]
+
+
+        objAyuda=Ayuda.objects.get(id_ayuda = ayuda)
+        obj=Producto.objects.create ( id_producto = id_producto,
+                                     nombre_producto = nombre_producto,
+                                     marca_producto = marca_producto,
+                                     precio_producto = precio_producto,
+                                     id_ayuda = objAyuda,
+                                     imagen = imagen)
+        obj.save()
+        context={'mensaje': "Datos guardados"}
+        return render(request, 'animales/crud/agregar.html',context)
+
+def eliminar(request,pk):
+    context={}
+    try:
+        producto=Producto.objects.get(id_producto = pk)
+
+        producto.delete()
+        mensaje="Producto eliminado"
+        productos = Producto.objects.all()
+        context = {'productos': productos, 'mensaje':mensaje}
+        return render(request, 'animales/crud/listar.html',context)
+    
+    except:
+        mensaje = "Error, producto no existe"
+        productos = Producto.objects.all()
+        context = {'productos':productos, 'mensaje':mensaje}
+        return render (request, 'animales/crud/listar.html',context)
+    

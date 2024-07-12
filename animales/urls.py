@@ -19,5 +19,7 @@ urlpatterns =[
 
 
    path('listar', views.listar, name='listar'),
+   path('agregar',views.agregar, name='agregar'),
+   path('eliminar/<str:pk>', views.eliminar, name='eliminar'),
    
 ]

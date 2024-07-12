@@ -1,0 +1,54 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud listar</title>
+</head>
+<body>
+    <h2>Editar datos de productos</h2>
+    <br>
+    <button type="button">
+        <a href="">Agregar nuevo producto</a>
+    </button>
+
+    <div id="idMensaje">
+        {% if mensaje %}
+            {{mensaje}}
+        {% endif %}
+    </div>
+
+    <table>
+        {% if productos %}
+            <th>Id producto</th>
+            <th>Nombre producto</th>
+            <th>Marca producto</th>
+            <th>Valor producto</th>
+            <th>Tipo producto</th>
+            <th>Imagen referencial</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            {%for x in productos %}
+                <tr>
+                    <td>{{ x.id_producto }}</td>
+                    <td>{{ x.nombre_producto }}</td>
+                    <td>{{ x.marca_producto }}</td>
+                    <td>{{ x.valor_producto }}</td>
+                    <td>{{ x.id_ayuda }}</td>
+                    <td>{{ x.imagen }}</td>
+                    <td><a href="">Editar</a></td>
+                    <td><a href="{% url 'eliminar' pk=x.id_producto %}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#idMensajes").delay(2000).fadeOut("slow");
+        });
+    </script>
+</body>
+</html>
