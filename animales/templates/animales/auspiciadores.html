@@ -7,42 +7,42 @@
     <title>Nuestros auspiciadores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href='{% static "css/estilos.css"%}'>
+    <link rel="stylesheet" href='{% static "css/estilos2.css"%}'>
 </head>
 <body>
      <!--header-->
      <header>
-        <div class="encabezado">
-            <img src='{% static "img/logo.png"%}' alt="" id="imagen_logo">
-            <!--<ul class="nav justify-content-center">-->
-            <a href="{% url 'index'%}" class="enlace_header">Inicio</a>
-            <div class="dropdown">
-                <button class="enlace_header">Adopción</button>
-                <div class="desplegable_header">
-                    <a href="{% url 'adopcionP'%}">Perritos</a>
-                    <a href="{% url 'adopcionG'%}">Gatitos</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="enlace_header"><strong>Nosotros</strong></button>
-                <div class="desplegable_header">
-                    <a href="">Nuestra misión</a>
-                    <a href="{% url 'auspiciadores'%}">Auspiciadores</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="enlace_header">Ayudanos</button>
-                <div class="desplegable_header">
-                    <a href="{% url 'apadrinacion'%}">Apadrina a un peludo</a>
-                    <a href="">Voluntariados</a>
-                    <a href="">Mascotas perdidas</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="enlace_header"><a href=""class="enlace_header">Contactanos</a></button>
-            </div>
-        </div>
-    </header>
+      <div class="encabezado">
+          <img src="{% static 'img/logo.png' %}" alt="Logo" id="imagen_logo">
+          <nav class="nav justify-content-center">
+              <ul>
+                  <li><a href="{% url 'index' %}" class="enlace_header">Inicio</a></li>
+                  <li class="dropdown">
+                      <button class="enlace_header" aria-haspopup="true" aria-expanded="false">Adopción</button>
+                      <div class="desplegable_header" aria-label="submenu">
+                          <a href="{% url 'adopcionP' %}">Perritos</a>
+                          <a href="{% url 'adopcionG' %}">Gatitos</a>
+                      </div>
+                  </li>
+                  <li class="dropdown">
+                      <button class="enlace_header" aria-haspopup="true" aria-expanded="false"><strong>Nosotros</strong></button>
+                      <div class="desplegable_header" aria-label="submenu">
+                          <a href="#">Nuestra misión</a>
+                          <a href="{% url 'auspiciadores' %}">Auspiciadores</a>
+                      </div>
+                  </li>
+                  <li class="dropdown">
+                      <button class="enlace_header" aria-haspopup="true" aria-expanded="false">Ayúdanos</button>
+                      <div class="desplegable_header" aria-label="submenu">
+                          <a href="{% url 'apadrinacion' %}">Apadrina a un peludo</a>
+                          <a href="#">Voluntariados</a>
+                          <a href="#">Mascotas perdidas</a>
+                      </div>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+  </header>
     <br>
     <!--cuerpo pagina-->
     <div align="center">

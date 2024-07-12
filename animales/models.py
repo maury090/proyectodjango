@@ -14,6 +14,7 @@ class Producto(models.Model):
     marca_producto = models.CharField(max_length=20)
     valor_producto = models.CharField(max_length=6)
     id_ayuda = models.ForeignKey('Ayuda', on_delete=models.CASCADE, db_column='idAyuda')
+    imagen = models.ImageField(upload_to="imagen_producto", null=True)
 
     def _str_(self):
         return str(self.nombre_producto)+ " - " + str(self.marca_producto)
