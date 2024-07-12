@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Ayuda,Producto
 
@@ -64,31 +64,36 @@ def listar(request):
     context = {'productos':productos}
     return render(request, 'animales/crud/listar.html',context)
 
-def agregar(request):
-    if request.method is not "POST":
-        ayudas = Ayuda.objects.all()
-        context={'ayudas':ayudas}
-        return render(request, 'animales/crud/agregar.html',context)
+def agregar_producto(request):
+    if request.method == 'POST':
+        id_producto = request.POST['idProducto']
+        nombre_producto = request.POST['nombreProducto']
+        marca_producto = request.POST['marcaProducto']
+        valor_producto = request.POST['precio']
+        id_ayuda = request.POST['tipo_producto']
+        imagen = request.FILES['imagen']  # Para manejar la imagen cargada
+
+        ayuda = Ayuda.objects.get(id_ayuda=id_ayuda)
+        
+        producto = Producto(
+            id_producto=id_producto,
+            nombre_producto=nombre_producto,
+            marca_producto=marca_producto,
+            valor_producto=valor_producto,
+            id_ayuda=ayuda,
+            imagen=imagen  # Asegúrate de tener un campo de imagen en tu modelo
+        )
+        
+        producto.save()
+
+        return redirect('listar')
     
-    else:
-        id_producto = request.POST["idProducto"]
-        nombre_producto = request.POST["nombreProducto"]
-        marca_producto = request.POST["marcaProducto"] 
-        precio_producto = request.POST["precio"]
-        ayuda = request.POST["tipo_producto"]
-        imagen = request.POST["imagen"]
+    ayudas = Ayuda.objects.all()
+    return render(request, 'animales/crud/agregar.html', {'ayudas': ayudas})
 
 
-        objAyuda=Ayuda.objects.get(id_ayuda = ayuda)
-        obj=Producto.objects.create ( id_producto = id_producto,
-                                     nombre_producto = nombre_producto,
-                                     marca_producto = marca_producto,
-                                     precio_producto = precio_producto,
-                                     id_ayuda = objAyuda,
-                                     imagen = imagen)
-        obj.save()
-        context={'mensaje': "Datos guardados"}
-        return render(request, 'animales/crud/agregar.html',context)
+
+
 
 def eliminar(request,pk):
     context={}
@@ -106,4 +111,34 @@ def eliminar(request,pk):
         productos = Producto.objects.all()
         context = {'productos':productos, 'mensaje':mensaje}
         return render (request, 'animales/crud/listar.html',context)
+    
+
+
+
+def agregar_producto(request):
+    if request.method == 'POST':
+        id_producto = request.POST['idProducto']
+        nombre_producto = request.POST['nombreProducto']
+        marca_producto = request.POST['marcaProducto']
+        valor_producto = request.POST['precio']
+        id_ayuda = request.POST['tipo_producto']
+        imagen = request.FILES['imagen']  # Para manejar la imagen cargada
+
+        ayuda = Ayuda.objects.get(id_ayuda=id_ayuda)
+        
+        producto = Producto(
+            id_producto=id_producto,
+            nombre_producto=nombre_producto,
+            marca_producto=marca_producto,
+            valor_producto=valor_producto,
+            id_ayuda=ayuda,
+            imagen=imagen  # Asegúrate de tener un campo de imagen en tu modelo
+        )
+        
+        producto.save()
+
+        return redirect('listar')
+    
+    ayudas = Ayuda.objects.all()
+    return render(request, 'animales/crud/agregar.html', {'ayudas': ayudas})
     

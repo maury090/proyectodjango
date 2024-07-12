@@ -10,31 +10,32 @@
 	<div align="center">
 		<h3>Formulario nuevo producto</h3>
 		<br>
-		<form action="agregar" method="POST">
-
+		<form action="{% url 'agregar' %}" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
-
-			<pre>Id producto:  <input type="text" name="idProducto"></pre>
-			<pre>Nombre producto: <input type="text"name="nombreProducto"></pre>
-			<pre>Marca producto: <input type="text" name="marcaProducto"></pre>
-			<pre>valor producto: <input type="text" name="precio"></pre>
-			<pre>Tipo producto: <select name="tipo_producto">
-
+			
+			<pre>Id producto:          <input type="text" name="idProducto"></pre>
+			<pre>Nombre producto:      <input type="text" name="nombreProducto"></pre>
+			<pre>Marca producto:       <input type="text" name="marcaProducto"></pre>
+			<pre>Valor producto:       <input type="text" name="precio"></pre>
+			<pre>Tipo producto:        <select name="tipo_producto">
 				{% for ayuda in ayudas %}
-					<option value="{{ayuda.id_ayuda}}"> {{ayuda.id_ayuda}}</option>
+					<option value="{{ ayuda.id_ayuda }}">{{ ayuda.ayuda }}</option>
 				{% endfor %}
-
 			</select></pre>
-			<pre>Imagen referencial <input type="image" name="imagen"></pre>
+			<pre>Imagen referencial:   <input type="file" name="imagen"></pre>
+			
+			<br>
+			<input type="submit" name="opcion" value="Agregar">
 		</form>
-		<br>
-		<a href="{% url 'listar'%}">Regresar</a>
+		
 		<br>
 		<div id="idMensajes">
-			{% id mensaje %}
-			{{mensaje}}
+			{% if mensaje %}
+				{{ mensaje }}
 			{% endif %}
 		</div>
+		
+		<a href="{% url 'listar' %}">Regresar</a>
 	</div>
 </body>
 </html>
